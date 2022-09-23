@@ -8,7 +8,7 @@ _Friday Class (22-2-24469)_
 | No. | Name        | Members                     | Requirements      |   
 |-----|-------------|-----------------------------|-------------------|
 | 0   | [Instructors](teams/instructors.md) | Scott Uk-Jin Lee, [Hansae Ju](https://github.com/Verssae/Verssae) | Instruct students |  
-| 3   | [Apple Team](teams/Apple.md)            | 박정빈, 준휘, 윤다빈, 양재호, 박준철                            | Visual Effect System |
+| 3   | [Apple Team](teams/Apple.md)            | [박정빈](https://github.com/dev-jjjjjeong-bin/dev-jjjjjeong-bin), [김준휘](https://github.com/kimkimjunjun/kimkimjunjun), [윤다빈](https://github.com/Dabeen-Yun), [양재호](https://github.com/Jae12ho/Jae12ho), [박준철](https://github.com/qkrwnscjf/qkrwnscjf)                            | Visual Effect System |
 
 
 ## Screenshots
