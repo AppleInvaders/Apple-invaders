@@ -118,7 +118,7 @@ public final class DrawManager {
 			spriteMap.put(SpriteType.EnemyShipC2, new boolean[12][8]);
 			spriteMap.put(SpriteType.EnemyShipSpecial, new boolean[16][7]);
 			spriteMap.put(SpriteType.Explosion, new boolean[13][7]);
-			spriteMap.put(SpriteType.ItemDrop, new boolean[5][5]);
+			spriteMap.put(SpriteType.ItemDrop, new boolean[9][9]);
 			spriteMap.put(SpriteType.ItemGet, new boolean[5][5]);
 			spriteMap.put(SpriteType.Shield, new boolean[13][1]);
 			spriteMap.put(SpriteType.Life, new boolean[13][13]);
@@ -479,7 +479,7 @@ public final class DrawManager {
 		String pointUpString = "Point Up!";
 		String shieldString = "Shield!";
 		String speedUpString = "Speed Up!";
-		String enemySpeedString = "Enemy Faster!";
+		String MachineGun = "Machine Gun!";
 		String lifeString = "Extra Life!";
 
 		if (option == 0) {
@@ -500,7 +500,7 @@ public final class DrawManager {
 					screen.getHeight()*2/12);
 		} else if (option == 4) {
 			backBufferGraphics.setColor(Color.WHITE);
-			drawCenteredRegularString(screen, enemySpeedString,
+			drawCenteredRegularString(screen, MachineGun,
 					screen.getHeight()*2/12);
 		} else if (option == 5) {
 			backBufferGraphics.setColor(Color.WHITE);
