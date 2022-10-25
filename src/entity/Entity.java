@@ -126,4 +126,8 @@ public class Entity {
 	public final int getHeight() {
 		return this.height;
 	}
+
+	public final void explosionColor() {
+		setColor(Color.RED);
+	}
 }

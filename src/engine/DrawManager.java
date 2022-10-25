@@ -52,7 +52,6 @@ public final class DrawManager {
 
 	/** Sprite types mapped to their images. */
 	private static Map<SpriteType, boolean[][]> spriteMap;
-
 	Color[] colors = {Color.gray, Color.darkGray, Color.black};
 
 	/** Sprite types. */
@@ -132,6 +131,8 @@ public final class DrawManager {
 			fontRegular = fileManager.loadFont(14f);
 			fontBig = fileManager.loadFont(24f);
 			logger.info("Finished loading the fonts.");
+
+
 
 		} catch (IOException e) {
 			logger.warning("Loading failed.");
@@ -1079,5 +1080,6 @@ public final class DrawManager {
 		drawCenteredRegularString(screen, saveString,
 				screen.getHeight() / 3 * 2 + fontRegularMetrics.getHeight() * 2);
 	}
+
 
 }

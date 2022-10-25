@@ -1,6 +1,7 @@
 package engine;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
@@ -21,14 +22,20 @@ import engine.DrawManager;
  */
 public final class FileManager {
 
-	/** Singleton instance of the class. */
+	/**
+	 * Singleton instance of the class.
+	 */
 	private static FileManager instance;
-	/** Application logger. */
+	/**
+	 * Application logger.
+	 */
 	private static Logger logger;
-	/** Max number of high scores. */
+	/**
+	 * Max number of high scores.
+	 */
 	private static final int MAX_SCORES = 7;
 
-	private static int playerShipShape,playerShipColor;
+	private static int playerShipShape, playerShipColor;
 
 	private static int shipShape;
 
@@ -53,11 +60,9 @@ public final class FileManager {
 	/**
 	 * Loads sprites from disk.
 	 *
-	 * @param spriteMap
-	 *            Mapping of sprite type and empty boolean matrix that will
-	 *            contain the image.
-	 * @throws IOException
-	 *             In case of loading problems.
+	 * @param spriteMap Mapping of sprite type and empty boolean matrix that will
+	 *                  contain the image.
+	 * @throws IOException In case of loading problems.
 	 */
 	public void loadSprite(final Map<SpriteType, boolean[][]> spriteMap)
 			throws IOException {
@@ -65,11 +70,11 @@ public final class FileManager {
 
 		try {
 			String graphicsName;
-			if(playerShipShape == 0){
+			if (playerShipShape == 0) {
 				graphicsName = "graphics";
-			}else if(playerShipShape == 1){
+			} else if (playerShipShape == 1) {
 				graphicsName = "graphics_1";
-			}else
+			} else
 				graphicsName = "graphics_2";
 			inputStream = DrawManager.class.getClassLoader()
 					.getResourceAsStream(graphicsName);
@@ -107,11 +112,11 @@ public final class FileManager {
 
 		try {
 			String graphicsName;
-			if(shipShape == 0){
+			if (shipShape == 0) {
 				graphicsName = "graphics";
-			}else if(shipShape == 1){
+			} else if (shipShape == 1) {
 				graphicsName = "graphics_1";
-			}else
+			} else
 				graphicsName = "graphics_2";
 			inputStream = DrawManager.class.getClassLoader()
 					.getResourceAsStream(graphicsName);
@@ -144,13 +149,10 @@ public final class FileManager {
 	/**
 	 * Loads a font of a given size.
 	 *
-	 * @param size
-	 *            Point size of the font.
+	 * @param size Point size of the font.
 	 * @return New font.
-	 * @throws IOException
-	 *             In case of loading problems.
-	 * @throws FontFormatException
-	 *             In case of incorrect font format.
+	 * @throws IOException         In case of loading problems.
+	 * @throws FontFormatException In case of incorrect font format.
 	 */
 	public Font loadFont(final float size) throws IOException,
 			FontFormatException {
@@ -176,8 +178,7 @@ public final class FileManager {
 	 * file.
 	 *
 	 * @return Default high scores.
-	 * @throws IOException
-	 *             In case of loading problems.
+	 * @throws IOException In case of loading problems.
 	 */
 	private List<Score> loadDefaultHighScores() throws IOException {
 		List<Score> highScores = new ArrayList<Score>();
@@ -215,8 +216,7 @@ public final class FileManager {
 	 * value.
 	 *
 	 * @return Sorted list of scores - players.
-	 * @throws IOException
-	 *             In case of loading problems.
+	 * @throws IOException In case of loading problems.
 	 */
 	public List<Score> loadHighScores() throws IOException {
 
@@ -273,10 +273,8 @@ public final class FileManager {
 	/**
 	 * Saves user high scores to disk.
 	 *
-	 * @param highScores
-	 *            High scores to save.
-	 * @throws IOException
-	 *             In case of loading problems.
+	 * @param highScores High scores to save.
+	 * @throws IOException In case of loading problems.
 	 */
 	public void saveHighScores(final List<Score> highScores)
 			throws IOException {
@@ -308,7 +306,9 @@ public final class FileManager {
 			for (Score score : highScores) {
 				if (savedCount >= MAX_SCORES)
 					break;
-				if(score.getScore() < 0 ){continue;}
+				if (score.getScore() < 0) {
+					continue;
+				}
 
 				bufferedWriter.write(score.getName());
 				bufferedWriter.newLine();
@@ -380,7 +380,7 @@ public final class FileManager {
 		OutputStream outputStream = null;
 		BufferedWriter bufferedWriter = null;
 
-		try	{
+		try {
 			String jarPath = FileManager.class.getProtectionDomain()
 					.getCodeSource().getLocation().getPath();
 			jarPath = URLDecoder.decode(jarPath, "UTF-8");
@@ -415,7 +415,7 @@ public final class FileManager {
 			File file = new File(jarPath + "../save");
 			BufferedWriter save = new BufferedWriter(new FileWriter(file));
 
-					String state = Integer.toString(gamestate.getLevel() + 1) + ' ' +
+			String state = Integer.toString(gamestate.getLevel() + 1) + ' ' +
 					Integer.toString(gamestate.getScore()) + ' ' +
 					Integer.toString(gamestate.getLivesRemaining()) + ' ' +
 					Integer.toString(gamestate.getBulletsShot()) + ' ' +
@@ -429,8 +429,8 @@ public final class FileManager {
 		}
 	}
 
-	public String[] loadInfo(){
-		String[] array = {"1","0","3","0","0"};
+	public String[] loadInfo() {
+		String[] array = {"1", "0", "3", "0", "0"};
 		try {
 			String jarPath = FileManager.class.getProtectionDomain()
 					.getCodeSource().getLocation().getPath();
@@ -443,14 +443,12 @@ public final class FileManager {
 			String save_info = br.readLine();
 			array = save_info.split(" ");
 			logger.info("Finish loading.");
-		}
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			logger.info("Save file is not found.");
 			logger.info("Starting New Game.");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		finally{
+		} finally {
 			return array;
 		}
 	}
@@ -483,7 +481,7 @@ public final class FileManager {
 		fileReader.close();
 		FileWriter fileWriter = new FileWriter("res/ship");
 		PrintWriter printWriter = new PrintWriter(fileWriter);
-		printWriter.print(shipShape+1);
+		printWriter.print(shipShape + 1);
 		playerShipShape = shipShape;
 		printWriter.print(colorNum - 48);
 		fileWriter.close();
@@ -492,6 +490,7 @@ public final class FileManager {
 	public static int getPlayerShipColor() {
 		return playerShipColor;
 	}
+
 	public static void setPlayerShipColor(int shipColor) {
 		try {
 			FileReader fileReader = new FileReader("res/ship");
@@ -500,17 +499,19 @@ public final class FileManager {
 			FileWriter fileWriter = new FileWriter("res/ship");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 			printWriter.print(shapeNum - 48);
-			printWriter.print(shipColor+1);
+			printWriter.print(shipColor + 1);
 			playerShipColor = shipColor;
 			fileWriter.close();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
-	public static Color ChangeIntToColor(){
-		if(playerShipColor == 1) return Color.blue;
-		else if(playerShipColor == 2) return Color.darkGray;
+
+	public static Color ChangeIntToColor() {
+		if (playerShipColor == 1) return Color.blue;
+		else if (playerShipColor == 2) return Color.darkGray;
 		else return Color.GREEN;
 	}
+
 }
 
