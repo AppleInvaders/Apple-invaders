@@ -92,7 +92,7 @@ public final class DrawManager {
     /** Life shape */
 		Life
 
-	};
+	}
 
 	/**
 	 * Private constructor.
@@ -476,12 +476,13 @@ public final class DrawManager {
 	 *            Option selected.
 	 */
 	public void drawItemInfo(final Screen screen, final int option) {
-		String bulletSpeedString = "Bullet Speed Up !";
-		String pointUpString = "Point Up !";
-		String machineString = "Machine Gun !";
-		String shieldString = "Shield !";
-		String speedUpString = "Speed Up !";
-		String lifeString = "Extra Life !";
+		String bulletSpeedString = "Bullet Speed Up!";
+		String pointUpString = "Point Up!";
+		String shieldString = "Shield!";
+		String speedUpString = "Speed Up!";
+		String MachineGun = "Machine Gun!";
+		String lifeString = "Extra Life!";
+
 
 		if (option == 0) {
 			backBufferGraphics.setColor(Color.WHITE);
@@ -493,15 +494,15 @@ public final class DrawManager {
 					screen.getHeight()*2/12);
 		} else if (option == 2) {
 			backBufferGraphics.setColor(Color.WHITE);
-			drawCenteredRegularString(screen, machineString,
+			drawCenteredRegularString(screen, shieldString,
 					screen.getHeight()*2/12);
 		} else if (option == 3) {
 			backBufferGraphics.setColor(Color.WHITE);
-			drawCenteredRegularString(screen, shieldString,
+			drawCenteredRegularString(screen, speedUpString,
 					screen.getHeight()*2/12);
 		} else if (option == 4) {
 			backBufferGraphics.setColor(Color.WHITE);
-			drawCenteredRegularString(screen, speedUpString,
+			drawCenteredRegularString(screen, MachineGun,
 					screen.getHeight()*2/12);
 		} else if (option == 5) {
 			backBufferGraphics.setColor(Color.WHITE);
