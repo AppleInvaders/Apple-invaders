@@ -18,6 +18,7 @@ import screen.Screen;
 import entity.Entity;
 import entity.Ship;
 import entity.Life;
+import sound.SoundPlay;
 
 /**
  * Manages screen drawing.
@@ -83,11 +84,11 @@ public final class DrawManager {
 		EnemyShipdangerous,
 
 		Explosion,
-
+		/** dropped item */
 		ItemDrop,
-
+		/** Obtained item */
 		ItemGet,
-
+		/** shield for playership */
 		Shield,
     
     /** Life shape */
@@ -345,7 +346,7 @@ public final class DrawManager {
 	}
 	//mainmenu 1014
 	public void drawVolume(final Screen screen, final int volume, final int option){
-		String volumeString = "Volume";
+		String volumeString = "Bgm";
 		String effectString = "Effect";
 		String backString = "Back";
 		
@@ -355,18 +356,20 @@ public final class DrawManager {
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, volumeString,
 				screen.getHeight()/3);
+		drawCenteredBigString(screen,"<        "+ SoundPlay.getInstance().getBgmVolume() +"        >",screen.getHeight()/3+fontRegularMetrics.getHeight() * 2);
 		if (option == 101)
 			backBufferGraphics.setColor(Color.GREEN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, effectString,
-				screen.getHeight()/3 + fontRegularMetrics.getHeight() * 2);
+				screen.getHeight()/3 + fontBigMetrics.getHeight()*3);
+		drawCenteredBigString(screen,"<        "+ SoundPlay.getInstance().getEffectVolume() +"        >",screen.getHeight()/3+fontRegularMetrics.getHeight() * 7);
 		if (option == 6)
 			backBufferGraphics.setColor(Color.GREEN);
 		else
 			backBufferGraphics.setColor(Color.WHITE);
 		drawCenteredRegularString(screen, backString,
-				screen.getHeight()/3 + fontRegularMetrics.getHeight() * 4);
+				screen.getHeight()/3 + fontBigMetrics.getHeight() * 7);
 		
 
 	}
@@ -479,7 +482,7 @@ public final class DrawManager {
 		String pointUpString = "Point Up!";
 		String shieldString = "Shield!";
 		String speedUpString = "Speed Up!";
-		String MachineGun = "Machine Gun!";
+		String enemySpeedString = "Enemy Faster!";
 		String lifeString = "Extra Life!";
 
 		if (option == 0) {
@@ -500,7 +503,7 @@ public final class DrawManager {
 					screen.getHeight()*2/12);
 		} else if (option == 4) {
 			backBufferGraphics.setColor(Color.WHITE);
-			drawCenteredRegularString(screen, MachineGun,
+			drawCenteredRegularString(screen, enemySpeedString,
 					screen.getHeight()*2/12);
 		} else if (option == 5) {
 			backBufferGraphics.setColor(Color.WHITE);
